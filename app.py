@@ -10,7 +10,8 @@ st.write("CODE QUEST 2026 - AI Application (FCIT)")
 
 @st.cache_resource
 def load_my_model():
-    model = tf.keras.models.load_model('waste_classifier_model.h5')
+    # මෙතනට compile=False කෑල්ල එකතු කළා Version ගැටලුව හැදෙන්න
+    model = tf.keras.models.load_model('waste_classifier_model.h5', compile=False)
     with open('class_names.json', 'r') as f:
         classes = json.load(f)
     return model, classes

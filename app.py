@@ -8,10 +8,9 @@ st.set_page_config(page_title="Smart Waste Classifier", page_icon="♻️")
 st.title("♻️ Smart Waste Classification System")
 st.write("CODE QUEST 2026 - AI Application (FCIT)")
 
-@st.cache_resource
+# කරදරකාරී cache ලේබල් එක අයින් කළා කෙලින්ම වැඩ කරන්න
 def load_my_model():
-    # මෙතනට compile=False කෑල්ල එකතු කළා Version ගැටලුව හැදෙන්න
-    model = tf.keras.models.load_model('waste_classifier_model.h5', compile=False)
+    model = tf.keras.models.load_model('waste_classifier_model.h5')
     with open('class_names.json', 'r') as f:
         classes = json.load(f)
     return model, classes
@@ -44,3 +43,5 @@ if uploaded_file is not None:
     st.write("### Prediction Probabilities for All Classes:")
     chart_data = {class_names[i]: float(predictions[i]) for i in range(len(class_names))}
     st.bar_chart(chart_data)
+
+    
